@@ -1,0 +1,16 @@
+{
+  "name": "untitled-spotify-project",
+  "version": "1.0.0",
+  "description": "Project created to enhance knowledge of Authorization and Advanced REST API. Basis of project: Authenticate Client, Fetch user data and listening history to create visual representation of user listening activity. Web/Server Based.",
+  "main": "Server/Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jxdn",
+  "repository": "https://github.com/ItsHisoka17/Moodify",
+  "license": "ISC",
+  "dependencies": {
+    "env": "^0.0.2",
+    "express": "^5.1.0"
+  }
+}
