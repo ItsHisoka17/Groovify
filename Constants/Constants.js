@@ -8,13 +8,10 @@ const Constants = {
     SCOPES: [
         "user-read-private",
         "user-read-email",
-        /*
-        "user-read-playback-position",
         "user-top-read",
         "user-read-recently-played",
-        "user-personalized"*/
     ],
-    REDIRECT_URI: "https://moodify.com/authorize/callback",
+    REDIRECT_URI: "https://groovify.com/authorize/callback",
     CLIENT_ID,
     CLIENT_KEY,
     PORT
