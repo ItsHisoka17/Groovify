@@ -8,12 +8,9 @@ class Authenticate {
     };
 
     redirAuthorize(){ 
-        let scope = [];
-        for (let k in SCOPES) {
-            scope.push(SCOPES[k])
-        };
+        let scope = SCOPES.join(" ");
         let state = Utils.generateState(16);
-        this.response.redirect(`${BASE_AUTHORIZATION_URL}?${
+        let authUrl = (`${BASE_AUTHORIZATION_URL}${
             Utils.querystringify({
                 response_type: "code",
                 client_id: CLIENT_ID,
@@ -21,7 +18,9 @@ class Authenticate {
                 state,
                 redirect_uri: REDIRECT_URI
             })
-        }`)
+        }`);
+        console.log(authUrl);
+        this.response.redirect(authUrl);
     };
 };
 

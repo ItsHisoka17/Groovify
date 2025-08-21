@@ -1,8 +1,10 @@
 const server = require("express")();
+const Gateway = require("./Gateways");
 const { PORT } = require("../Constants/Constants");
 
-server.listen(PORT, ()=> {
-    console.log(`SERVER RUNNINNG | PORT: 3000`);
-});
+console.log("STARTING SERVER...")
+new Gateway(server);
 
-module.exports = server;
+server.listen(PORT, ()=> {
+    console.log(`SERVER RUNNING | PORT: ${PORT}`)
+});
