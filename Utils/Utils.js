@@ -6,10 +6,7 @@ class Utils {
      */
     static querystringify(data){
         let query = "?";
-        let k;
-        for (k in data){
-            query += `${k}=${data[k]}&`;
-        };
+        query+= Object.entries(data).map(([k, v])=> `${k}=${v}`).join("&");
         return query;
     };
 
@@ -18,7 +15,7 @@ class Utils {
     * @returns {object}
     */
     static parseQuery(query){
-        let dataArr = query.slice(1).split("+");
+        let dataArr = query.slice(1).split("&");
         let data = {};
         for (let e of dataArr){
             data[e.split("=")[0]] = e.split("=")[1];
