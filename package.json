@@ -1,5 +1,5 @@
 {
-  "name": "untitled-spotify-project",
+  "name": "groovify",
   "version": "1.0.0",
   "description": "Project created to enhance knowledge of Authorization and Advanced REST API. Basis of project: Authenticate Client, Fetch user data and listening history to create visual representation of user listening activity. Web/Server Based.",
   "main": "Server/Server.js",
@@ -10,7 +10,7 @@
   "repository": "https://github.com/ItsHisoka17/Moodify",
   "license": "MIT",
   "dependencies": {
-    "env": "^0.0.2",
+    "dotenv": "^17.2.1",
     "express": "^5.1.0"
   }
 }
