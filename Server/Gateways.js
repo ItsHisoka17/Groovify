@@ -1,4 +1,6 @@
 const Authenticate = require("./Authentication");
+const Utils = require("../Utils/Utils");
+const fetch = require("node-fetch");
 
 class Gateway {
     constructor(server){
@@ -12,7 +14,8 @@ class Gateway {
         });
 
         server.get("/authorize/callback", (req, res)=> {
-
+            let { code } = Utils.parseQuery(req.parmas);
+            
         });
     };
 };

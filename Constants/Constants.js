@@ -4,6 +4,7 @@ const {CLIENT_ID, CLIENT_KEY, PORT} = ENV;
 
 const Constants = {
     BASE_AUTHORIZATION_URL: "https://accounts.spotify.com/authorize",
+    TOKEN_FETCH_URL: "https://accounts.spotify.com/api/token",
     BASE_API_URL: "https://api.spotify.com",
     SCOPES: [
         "user-read-private",
