@@ -1,6 +1,7 @@
 const Authenticate = require("./Authentication");
 const Utils = require("../Utils/Utils");
 const fetch = require("node-fetch");
+const { BASE_API_URL } = require("../Constants/Constants");
 
 class Gateway {
     constructor(server){
@@ -15,7 +16,8 @@ class Gateway {
 
         server.get("/authorize/callback", (req, res)=> {
             let { code } = Utils.parseQuery(req.parmas);
-            
+            new Authenticate(req, res).fetchToken(code);
+
         });
     };
 };
