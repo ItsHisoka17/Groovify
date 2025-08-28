@@ -1,25 +1,77 @@
 const Authenticate = require("./Authentication");
-const Utils = require("../Utils/Utils");
-const fetch = require("node-fetch");
-const { BASE_API_URL } = require("../Constants/Constants");
+const Fetch = require("./Fetch");
+const express = require("express");
+const path = require("path");
 
 class Gateway {
     constructor(server){
         console.log("Gateway initialized...");
-        server.get("/", (req, res)=> {
-            res.sendFile(require("path").join(__dirname, `../Public/index.html`))
-        });
+
+        server.use(express.json());
+
         server.get("/authorize", (req, res)=> {
             new Authenticate(req, res)
             .redirAuthorize();
         });
 
         server.get("/authorize/callback", (req, res)=> {
-            let { code } = Utils.parseQuery(req.parmas);
-            new Authenticate(req, res).fetchToken(code);
-
+            let { code } = req.query;
+            let data = new Authenticate(req, res).fetchToken(code);
+            this.token = data["access_token"];
+            this.tokenExpiry = data["expires_in"];
+            this.refreshToken = data["refresh_token"];
+            this.fetch = new Fetch(this.token);
         });
+
+        server.get("/api/validate_session", (req, res)=> {
+            if (this.token&&this.token instanceof String) {
+                res.
+                json({status: 200}).
+                status(200);
+            } else {
+                res.
+                json({status: 401}).
+                status(401);
+            };
+        })
+
+        server.get("/api", (req, res)=> {
+            let requestedData = req.query;
+            let dataJson;
+            switch(requestedData.data){
+                case "user_data": {
+                    this.fetch.fetchArtists()
+                    .then(data=> {
+                        dataJson = data;
+                    });
+                    break;
+                };
+
+                case "top_tracks": {
+                    this.fetch.fetchTracks()
+                    .then(data=> {
+                        dataJson = data;
+                    });
+                    break;
+                };
+
+                case "top_artists": {
+                    this.fetch.fetchArtists()
+                    .then(data=> {
+                        dataJson = data;
+                    });
+                    break;
+                };
+            };
+            res.json(dataJson);
+        });
+        server.use(express.static(path.join(process.cwd(), "Client", "dist")));
+        server.get(/^(?!\/(api|authorize)).*/, (req, res)=> {
+            res.sendFile(path.join(process.cwd(), "Client", "dist", "index.html"));
+        })
+        console.log("GATEWAY STARTED");
     };
+
 };
 
 module.exports = Gateway;
