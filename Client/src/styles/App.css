@@ -1,0 +1,72 @@
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #2e0249, #570a57, #a91079, #f806cc);
+  background-size: 400% 400%;
+  animation: gradientMove 16s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 24px;
+}
+
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.overlay {
+  width: min(680px, 92vw);
+  padding: 56px 40px;
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+.logo {
+  font-size: clamp(48px, 8vw, 72px);
+  font-weight: 900;
+  line-height: 1;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(45deg, #1db954, #00f5ff, #ff00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.vinyl {
+  width: 0.95em;
+  height: 0.95em;
+  display: inline-block;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #ffffff 0 6%, transparent 6%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 7%, transparent 8%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 12%, transparent 13%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06) 18%, transparent 19%),
+    #0e0e0e;
+  box-shadow: inset 0 0 0 2px #000, inset 0 0 18px rgba(255,255,255,0.08);
+  animation: spin 4.5s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.tagline {
+  margin: 14px 0 28px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(14px, 2.6vw, 18px);
+}
+
+.app-content {
+  padding: 24px;
+  font-family: sans-serif;
+}
