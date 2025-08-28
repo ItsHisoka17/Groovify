@@ -1,6 +1,6 @@
 class RequestError extends Error {
     constructor(message){
-        message = message instanceof String ? message : "UNKOWN ERROR";
+        super(message)
         this.message = message;
         this.name = "RequestError";
     };

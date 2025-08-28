@@ -5,14 +5,16 @@ const {CLIENT_ID, CLIENT_KEY, PORT} = ENV;
 const Constants = {
     BASE_AUTHORIZATION_URL: "https://accounts.spotify.com/authorize",
     TOKEN_FETCH_URL: "https://accounts.spotify.com/api/token",
-    BASE_API_URL: "https://api.spotify.com",
+    BASE_API_URL: "https://api.spotify.com/v1",
     SCOPES: [
         "user-read-private",
         "user-read-email",
         "user-top-read",
         "user-read-recently-played",
+        "user-follow-read"
     ],
-    REDIRECT_URI: "https://groovify.com/authorize/callback",
+    REDIRECT_URI: "https://groovify.space/authorize/callback",
+    BACKEND_API_URL: "https://groovify.space/api",
     CLIENT_ID,
     CLIENT_KEY,
     PORT
