@@ -36,7 +36,7 @@ class Fetch {
         for (let t of items) {
             let artists = [];
             for (let a of t.artists){
-                artists.push(e.name);
+                artists.push(a.name);
             };
         let image = t.album.images[0]["url"];
             tracksArray.push({
