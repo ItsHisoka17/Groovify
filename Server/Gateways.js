@@ -33,7 +33,6 @@ class Gateway {
         });
 
         server.get("/api/validate_session", (req, res)=> {
-            console.log(this.loggedIn)
             if (this.loggedIn) {
                 res.set({"Access-Control-Allow-Origin": "https://groovify.space",
 "Access-Control-Allow-Credentials": true})
