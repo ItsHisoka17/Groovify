@@ -42,31 +42,22 @@ class Gateway {
             }
         });
 
-        server.get("/api", (req, res)=> {
+        server.get("/api", async (req, res)=> {
             let requestedData = req.query;
             let dataJson;
             switch(requestedData.data){
                 case "user_data": {
-                    this.fetch.fetchArtists()
-                    .then(data=> {
-                        dataJson = data;
-                    });
+                    dataJson = await this.fetch.fetchArtists();
                     break;
                 };
 
                 case "top_tracks": {
-                    this.fetch.fetchTracks()
-                    .then(data=> {
-                        dataJson = data;
-                    });
+                    dataJson = await this.fetch.fetchTracks();
                     break;
                 };
 
                 case "top_artists": {
-                    this.fetch.fetchArtists()
-                    .then(data=> {
-                        dataJson = data;
-                    });
+                    dataJson = await this.fetch.fetchArtists();
                     break;
                 };
             };
