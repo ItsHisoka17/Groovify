@@ -20,7 +20,6 @@ class Authenticate {
                 redirect_uri: REDIRECT_URI
             })
         }`);
-        console.log(authUrl)
         this.response.redirect(authUrl);
     };
 

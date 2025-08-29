@@ -22,11 +22,12 @@ class Gateway {
             this.tokenExpiry = data["expires_in"];
             this.refreshToken = data["refresh_token"];
             this.fetch = new Fetch(this.token);
-            res.redirect(BASE_URL)
+            if(this.token) console.log("TOKEN FETCHED");
+            res.redirect(BASE_URL);
         });
 
         server.get("/api/validate_session", (req, res)=> {
-            if (this.token&&this.token instanceof String) {
+            if (this.token) {
                 res.
                 json({status: 200}).
                 status(200);
