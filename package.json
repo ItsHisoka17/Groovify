@@ -4,7 +4,7 @@
   "description": "Project created to enhance knowledge of Authorization and Advanced REST API. Basis of project: Authenticate Client, Fetch user data and listening history to create visual representation of user listening activity. Web/Server Based.",
   "main": "Server/Server.js",
   "scripts": {
-    "build": "npm install --prefix Server && npm install --prefix Client && npm run build --prefix Client",
+    "build": "npm install && npm install --prefix Client && npm run build --prefix Client",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node Server/Server.js",
     "pid": "lsof -i :3000"
