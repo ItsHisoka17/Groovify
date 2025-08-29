@@ -37,17 +37,16 @@ class Gateway {
         server.get("/authorize/callback", async (req, res)=> {
             let { code } = req.query;
             let data = await new Authenticate(req, res).fetchToken(code);
-            req.session.data = {
-                token: data["access_token"],
-                expiry: data["expires_in"],
-                loggedIn: true
-            };
+            req.session.token = data["access_token"];
+            req.session.expiry = data["expires_in"];
+            req.session.loggedIn = true;
             res.redirect(BASE_URL);
-            setTimeout(()=> {req.session.data.loggedIn = false}, req.session.data.expiry);
+            console.log(req.session);//Tests
+            setTimeout(()=> {req.session.loggedIn = false}, req.session.expiry*1000);
         });
 
         server.get("/api/validate_session", (req, res)=> {
-            if (req.session.data.loggedIn) {
+            if (req.session.loggedIn) {
                 res.set({"Access-Control-Allow-Origin": "https://groovify.space",
 "Access-Control-Allow-Credentials": true})
                 res.status(200).json({status: 200});
@@ -57,7 +56,7 @@ class Gateway {
         });
 
         server.get("/api", async (req, res)=> {
-            let { token } = req.session.data;
+            let { token } = req.session;
             if (!token) {
                 res.redirect(BASE_URL);
             };
