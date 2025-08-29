@@ -40,6 +40,7 @@ class Gateway {
             req.session.token = data["access_token"];
             req.session.expiry = data["expires_in"];
             req.session.loggedIn = true;
+            await req.session.save();
             res.redirect(BASE_URL);
             setTimeout(()=> {req.session.loggedIn = false}, req.session.expiry*1000);
         });
