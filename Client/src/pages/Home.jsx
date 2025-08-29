@@ -3,6 +3,7 @@ import "../styles/Home.css";
 import ProfileCard from "../components/Profile";
 import TopTracks from "../components/Tracks";
 import TopArtists from "../components/Artists";
+import Logo from "../components/Logo";
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -50,6 +51,7 @@ export default function Home() {
 
   return (
     <div className="home-container fade-in">
+      <Logo />
       <ProfileCard user={user} />
       <section className="data-sections">
         <TopTracks tracks={tracks} />

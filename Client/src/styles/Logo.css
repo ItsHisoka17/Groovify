@@ -1,0 +1,35 @@
+.logo {
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(45deg, #1DB954, #00FFE5, #FF00FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 15px rgba(29, 185, 84, 0.8),
+               0 0 25px rgba(0, 255, 229, 0.6),
+               0 0 35px rgba(255, 0, 255, 0.4);
+}
+
+.vinyl {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #ffffff 0 6%, transparent 6%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 7%, transparent 8%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 12%, transparent 13%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06) 18%, transparent 19%),
+    #0e0e0e;
+  box-shadow: inset 0 0 0 2px #000, inset 0 0 18px rgba(255,255,255,0.08), 0 0 10px #1DB954;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

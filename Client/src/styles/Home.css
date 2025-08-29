@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  animation: fadeIn 1.5s ease-in-out;
 }
 
 .data-sections {
@@ -20,7 +19,9 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #1db954, #121212);
+  background: linear-gradient(135deg, #ff00ff, #1db954, #00ffe5);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
   color: white;
 }
 
@@ -39,7 +40,6 @@
   animation: spin 1s linear infinite;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -52,4 +52,10 @@
 
 @keyframes spin {
   100% { transform: rotate(360deg); }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

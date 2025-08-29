@@ -1,21 +1,10 @@
 .tracks-container {
-  background: #202020;
+  background: rgba(0,0,0,0.5);
   padding: 1.5rem;
   border-radius: 16px;
   width: 350px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 15px #1db954, 0 0 25px #00ffe5, 0 0 40px #ff00ff;
   animation: slideUp 1s ease;
-}
-
-.section-title {
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-}
-
-.tracks-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .track-card {
@@ -25,37 +14,23 @@
   padding: 0.6rem;
   border-radius: 10px;
   background: rgba(255,255,255,0.05);
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .track-card:hover {
   transform: translateX(8px);
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.15);
+  box-shadow: 0 0 15px #1db954, 0 0 25px #00ffe5, 0 0 35px #ff00ff;
 }
 
-.track-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
-  margin-right: 1rem;
-}
-
-.track-info {
-  display: flex;
-  flex-direction: column;
+.track-name, .track-artist {
+  color: white;
 }
 
 .track-name {
   font-weight: bold;
-  color: white;
-}
-
-.track-artist {
-  font-size: 0.9rem;
-  color: #aaa;
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  background: linear-gradient(90deg, #1DB954, #00FFE5, #FF00FF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

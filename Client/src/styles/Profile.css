@@ -1,14 +1,15 @@
 .profile-card {
-  background: #181818;
+  background: rgba(0,0,0,0.5);
   padding: 1.5rem;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  transition: transform 0.3s ease;
+  box-shadow: 0 6px 20px rgba(29, 185, 84, 0.5), 0 0 15px #00ffe5, 0 0 25px #ff00ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-card:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 25px #1db954, 0 0 20px #00ffe5, 0 0 35px #ff00ff;
 }
 
 .profile-img {
@@ -20,22 +21,17 @@
   border: 3px solid #1db954;
 }
 
-.glow {
-  box-shadow: 0 0 15px #1db954;
-}
-
 .profile-name {
   font-size: 1.8rem;
   margin: 0.5rem 0;
-}
-
-.profile-followers {
-  color: #aaa;
-}
-
-.gradient-text {
-  background: linear-gradient(90deg, #1db954, #1ed760);
+  background: linear-gradient(90deg, #1DB954, #00FFE5, #FF00FF);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.profile-followers {
+  color: #ccc;
 }
