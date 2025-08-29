@@ -14,6 +14,9 @@ function App() {
         const response = await fetch("https://groovify.space/api/validate_session", {
           credentials: "include",
         });
+        //Tests
+        console.log(response);
+        alert(response);
         if (response.status === 200) {
           setLoggedIn(true);
         } else {

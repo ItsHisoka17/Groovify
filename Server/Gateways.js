@@ -8,8 +8,10 @@ const cors = require("cors");
 
 class Gateway {
     constructor(server){
-        console.log("Gateway initialized...");
-
+        console.log("Gateway initializing...");
+        setInterval((async ()=> {
+            await fetch(BASE_URL, {method: "GET"});
+        }), 13*60*1000);
         server.use(express.json());
         server.use(cookies());
         server.use(cors({origin: BASE_URL, credentials: true}));
@@ -31,14 +33,11 @@ class Gateway {
 
         server.get("/api/validate_session", (req, res)=> {
             if (this.token) {
-                console.log(this.token);
                 res.set({"Access-Control-Allow-Origin": "https://groovify.space",
 "Access-Control-Allow-Credentials": true})
-                res.json({status: 200}).status(200);
+                res.status(200).json({status: 200});
             } else {
-                res.
-                json({status: 401}).
-                status(401);
+                res.status(401).json({status: 401});
             };
         })
 
@@ -76,7 +75,7 @@ class Gateway {
         server.get(/^(?!\/(api|authorize)).*/, (req, res)=> {
             res.sendFile(path.join(process.cwd(), "Client", "dist", "index.html"));
         })
-        console.log("GATEWAY STARTED");
+        console.log("Gateway initialized");
     };
 
 };
