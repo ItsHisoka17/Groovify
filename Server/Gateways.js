@@ -22,7 +22,6 @@ class Gateway {
             this.tokenExpiry = data["expires_in"];
             this.refreshToken = data["refresh_token"];
             this.fetch = new Fetch(this.token);
-            console.log(this.token)
             res.redirect(BASE_URL);
         });
 
