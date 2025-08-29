@@ -1,7 +1,8 @@
-const { BASE_URL } = require("../Constants/Constants");
+const { BASE_URL, SESSIONID } = require("../Constants/Constants");
 const Authenticate = require("./Authentication");
 const Fetch = require("./Fetch");
 const express = require("express");
+const session = require("express-session");
 const path = require("path");
 const cookies = require("cookie-parser");
 const cors = require("cors");
@@ -15,6 +16,18 @@ class Gateway {
         server.use(express.json());
         server.use(cookies());
         server.use(cors({origin: BASE_URL, credentials: true}));
+        server.use(session({
+            secret: SESSIONID,
+            resave: false,
+            saveUninitialized: false,
+            cookie: {
+                httpOnly: true,
+                secure: true,
+                maxAge: 1000 * 60 * 60 * 24
+            }
+        }));
+        this.fetch = new Fetch();
+
 
         server.get("/authorize", (req, res)=> {
             new Authenticate(req, res)
@@ -24,16 +37,17 @@ class Gateway {
         server.get("/authorize/callback", async (req, res)=> {
             let { code } = req.query;
             let data = await new Authenticate(req, res).fetchToken(code);
-            this.token = data["access_token"];
-            this.tokenExpiry = data["expires_in"];
-            this.refreshToken = data["refresh_token"];
-            this.loggedIn = true;
-            this.fetch = new Fetch(this.token);
+            req.session.data = {
+                token: data["access_token"],
+                expiry: data["expires_in"],
+                loggedIn: true
+            };
             res.redirect(BASE_URL);
+            setTimeout(()=> {req.session.data.loggedIn = false}, req.session.data.expiry);
         });
 
         server.get("/api/validate_session", (req, res)=> {
-            if (this.loggedIn) {
+            if (req.session.data.loggedIn) {
                 res.set({"Access-Control-Allow-Origin": "https://groovify.space",
 "Access-Control-Allow-Credentials": true})
                 res.status(200).json({status: 200});
@@ -43,21 +57,25 @@ class Gateway {
         });
 
         server.get("/api", async (req, res)=> {
+            let { token } = req.session.data;
+            if (!token) {
+                res.redirect(BASE_URL);
+            };
             let requestedData = req.query;
             let dataJson;
             switch(requestedData.data){
                 case "user_data": {
-                    dataJson = await this.fetch.fetchArtists();
+                    dataJson = await this.fetch.fetchArtists(token);
                     break;
                 };
 
                 case "top_tracks": {
-                    dataJson = await this.fetch.fetchTracks();
+                    dataJson = await this.fetch.fetchTracks(token);
                     break;
                 };
 
                 case "top_artists": {
-                    dataJson = await this.fetch.fetchArtists();
+                    dataJson = await this.fetch.fetchArtists(token);
                     break;
                 };
             };

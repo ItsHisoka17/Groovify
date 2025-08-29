@@ -1,6 +1,6 @@
 require("dotenv").config();
 const ENV = process.env;
-const {CLIENT_ID, CLIENT_KEY, PORT} = ENV;
+const {CLIENT_ID, CLIENT_KEY, PORT, SESSIONID} = ENV;
 
 const Constants = {
     BASE_AUTHORIZATION_URL: "https://accounts.spotify.com/authorize",
@@ -18,7 +18,8 @@ const Constants = {
     BACKEND_API_URL: "https://groovify.space/api",
     CLIENT_ID,
     CLIENT_KEY,
-    PORT
+    PORT,
+    SESSIONID
 };
 
 

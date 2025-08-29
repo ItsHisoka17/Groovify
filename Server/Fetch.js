@@ -1,15 +1,14 @@
 const { BASE_API_URL } = require("../Constants/Constants");
 
 class Fetch {
-    constructor(token){
-        this.token = token;
+    constructor(){
     }
 
-    async fetchUserData(){ 
+    async fetchUserData(token){ 
         let response = await fetch(BASE_API_URL + "/me", {
             method: "GET",
             headers: {
-                "Authorization": `Bearer ${this.token}`
+                "Authorization": `Bearer ${token}`
             }
         });
         let responseData = await response.json();
@@ -24,11 +23,11 @@ class Fetch {
         return data;
     };
 
-    async fetchTracks(){
+    async fetchTracks(token){
         let response = await fetch(BASE_API_URL + "/me/top/tracks?time_range=medium_term", {
             method: "GET",
             headers: {
-                "Authorization": `Bearer ${this.token}`
+                "Authorization": `Bearer ${token}`
             }
         });
         let { items } = await response.json();
@@ -49,11 +48,11 @@ class Fetch {
         return tracksArray;
     };
 
-    async fetchArtists(){
+    async fetchArtists(token){
         let response = await fetch(BASE_API_URL + "/me/top/artists?time_range=medium_term", {
             method: "GET",
             headers: {
-                "Authorization": `Bearer ${this.token}`
+                "Authorization": `Bearer ${token}`
             }
         });
         let { items } = await response.json();
