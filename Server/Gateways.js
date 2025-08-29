@@ -1,3 +1,4 @@
+const { BASE_URL } = require("../Constants/Constants");
 const Authenticate = require("./Authentication");
 const Fetch = require("./Fetch");
 const express = require("express");
@@ -21,6 +22,7 @@ class Gateway {
             this.tokenExpiry = data["expires_in"];
             this.refreshToken = data["refresh_token"];
             this.fetch = new Fetch(this.token);
+            res.redirect(BASE_URL)
         });
 
         server.get("/api/validate_session", (req, res)=> {
