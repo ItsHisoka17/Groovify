@@ -17,13 +17,14 @@ class Gateway {
 
         server.get("/authorize/callback", (req, res)=> {
             let { code } = req.query;
-            let data = new Authenticate(req, res).fetchToken(code);
-            this.token = data["access_token"];
-            this.tokenExpiry = data["expires_in"];
-            this.refreshToken = data["refresh_token"];
-            this.fetch = new Fetch(this.token);
-            if(this.token) console.log("TOKEN FETCHED");
+            new Authenticate(req, res).fetchToken(code)
+            .then((data)=> {
+                this.token = data["access_token"];
+                this.tokenExpiry = data["expires_in"];
+                this.refreshToken = data["refresh_token"];
+                this.fetch = new Fetch(this.token);
             res.redirect(BASE_URL);
+            })
         });
 
         server.get("/api/validate_session", (req, res)=> {
