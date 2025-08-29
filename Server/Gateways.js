@@ -15,7 +15,6 @@ class Gateway {
         server.use(express.json());
         server.use(cookies());
         server.use(cors({origin: BASE_URL, credentials: true}));
-        this.loggedIn = false;
 
         server.get("/authorize", (req, res)=> {
             new Authenticate(req, res)
@@ -39,7 +38,9 @@ class Gateway {
                 res.set({"Access-Control-Allow-Origin": "https://groovify.space",
 "Access-Control-Allow-Credentials": true})
                 res.status(200).json({status: 200});
-            };
+            } else {
+                res.status(401).json({status: 401});
+            }
         });
 
         server.get("/api", (req, res)=> {
