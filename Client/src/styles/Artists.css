@@ -1,5 +1,5 @@
 .artists-container {
-  width: min(400px, 90vw);
+  width: min(500px, 45vw);
   padding: 1rem;
   border-radius: 16px;
   background: rgba(0, 0, 0, 0.35);
@@ -24,8 +24,8 @@
 }
 
 .artist-card img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -38,7 +38,7 @@
 
 .artist-name {
   font-weight: bold;
-  font-size: 0.95rem;
+  font-size: 1rem;
   background: linear-gradient(90deg, #1DB954, #00FFE5, #FF00FF);
   background-clip: text;
   -webkit-background-clip: text;
