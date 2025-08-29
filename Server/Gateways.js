@@ -26,6 +26,7 @@ class Gateway {
         });
 
         server.get("/api/validate_session", (req, res)=> {
+            console.log(this.token)
             if (this.token) {
                 res.
                 json({status: 200}).
