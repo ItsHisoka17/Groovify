@@ -41,11 +41,11 @@ class Gateway {
             req.session.expiry = data["expires_in"];
             req.session.loggedIn = true;
             res.redirect(BASE_URL);
-            console.log(req.session);//Tests
             setTimeout(()=> {req.session.loggedIn = false}, req.session.expiry*1000);
         });
 
         server.get("/api/validate_session", (req, res)=> {
+            console.log(req.session);
             if (req.session.loggedIn) {
                 res.set({"Access-Control-Allow-Origin": "https://groovify.space",
 "Access-Control-Allow-Credentials": true})
