@@ -16,16 +16,6 @@ class Gateway {
         server.use(express.json());
         server.use(cookies());
         server.use(cors({origin: BASE_URL, credentials: true}));
-        server.use(session({
-            secret: SESSIONID,
-            resave: false,
-            saveUninitialized: false,
-            cookie: {
-                httpOnly: true,
-                secure: true,
-                maxAge: 1000 * 60 * 60 * 24
-            }
-        }));
         this.fetch = new Fetch();
 
 
@@ -37,17 +27,15 @@ class Gateway {
         server.get("/authorize/callback", async (req, res)=> {
             let { code } = req.query;
             let data = await new Authenticate(req, res).fetchToken(code);
-            req.session.token = data["access_token"];
-            req.session.expiry = data["expires_in"];
-            req.session.loggedIn = true;
-            await req.session.save();
-            res.redirect(BASE_URL);
-            setTimeout(()=> {req.session.loggedIn = false}, req.session.expiry*1000);
+            res.cookie("token", data["access_token"], {
+                httpOnly: true,
+                secure: true,
+                maxAge: data["expires_in"]*1000
+            });
         });
 
         server.get("/api/validate_session", (req, res)=> {
-            console.log(req.session);
-            if (req.session.loggedIn) {
+            if (req.cookies.token) {
                 res.set({"Access-Control-Allow-Origin": "https://groovify.space",
 "Access-Control-Allow-Credentials": true})
                 res.status(200).json({status: 200});
@@ -57,7 +45,7 @@ class Gateway {
         });
 
         server.get("/api", async (req, res)=> {
-            let { token } = req.session;
+            let { token } = req.cookies;
             if (!token) {
                 res.redirect(BASE_URL);
             };

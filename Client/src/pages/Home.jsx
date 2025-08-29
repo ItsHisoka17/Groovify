@@ -14,9 +14,9 @@ export default function Home() {
     async function fetchData() {
       try {
         const [userRes, tracksRes, artistsRes] = await Promise.all([
-          fetch("https://groovify.space/api?data=user_data"),
-          fetch("https://groovify.space/api?data=top_tracks"),
-          fetch("https://groovify.space/api?data=top_artists"),
+          fetch("https://groovify.space/api?data=user_data", {credentials:"include"}),
+          fetch("https://groovify.space/api?data=top_tracks", {credentials:"include"}),
+          fetch("https://groovify.space/api?data=top_artists", {credentials:"include"}),
         ]);
 
         if (userRes.status !== 200) {
