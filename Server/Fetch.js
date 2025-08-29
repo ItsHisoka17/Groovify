@@ -12,12 +12,12 @@ class Fetch {
             }
         });
         let responseData = await response.json();
-        let {display_name, url, followers} = responseData;
+        let {display_name, uri, followers} = responseData;
         let image = responseData.images[0].url;
         let data = {
             name: display_name,
             image,
-            url,
+            uri,
             followers: followers["total"]
         };
         return data;
@@ -40,7 +40,7 @@ class Fetch {
         let image = t.album.images[0]["url"];
             tracksArray.push({
                 name: t.name,
-                url: t.url,
+                url: t.uri,
                 artists,
                 image,
             });
@@ -61,7 +61,7 @@ class Fetch {
             let image = a.images[0]["url"];
             artistArray.push({
                 name: a.name,
-                url: a.url,
+                url: a.uri,
                 image
             });
         };
