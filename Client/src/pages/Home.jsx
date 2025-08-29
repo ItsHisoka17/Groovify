@@ -22,7 +22,7 @@ export default function Home() {
         if (userRes.status !== 200) {
           window.location.href = "/login";
           return;
-        }
+        };
 
         const userData = await userRes.json();
         const trackData = await tracksRes.json();

@@ -9,7 +9,7 @@ class Fetch {
         let response = await fetch(BASE_API_URL + "/me", {
             method: "GET",
             headers: {
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${this.token}`
             }
         });
         let responseData = await response.json();
@@ -28,7 +28,7 @@ class Fetch {
         let response = await fetch(BASE_API_URL + "/me/top/tracks?time_range=medium_term", {
             method: "GET",
             headers: {
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${this.token}`
             }
         });
         let { items } = await response.json();
@@ -53,7 +53,7 @@ class Fetch {
         let response = await fetch(BASE_API_URL + "/me/top/artists?time_range=medium_term", {
             method: "GET",
             headers: {
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${this.token}`
             }
         });
         let { items } = await response.json();
