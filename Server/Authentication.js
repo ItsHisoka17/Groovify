@@ -43,9 +43,9 @@ class Authenticate {
                 this.response.json({error: `TOKEN FETCH FAILED | STATUS: ${res.status} | RAW RESPONSE: ${res}`, status: res.status});
                 return;
             };
-            console.log(res);
             let data = await res.json();
-            console.log(data)
+            console.log(data);
+            return data;
     };
 };
 
