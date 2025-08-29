@@ -15,16 +15,15 @@ class Gateway {
             .redirAuthorize();
         });
 
-        server.get("/authorize/callback", (req, res)=> {
+        server.get("/authorize/callback", async (req, res)=> {
             let { code } = req.query;
-            new Authenticate(req, res).fetchToken(code)
-            .then((data)=> {
-                this.token = data["access_token"];
-                this.tokenExpiry = data["expires_in"];
-                this.refreshToken = data["refresh_token"];
-                this.fetch = new Fetch(this.token);
+            let data = await new Authenticate(req, res).fetchToken(code);
+            console.log(data.tokenExpiry)
+            this.token = data["access_token"];
+            this.tokenExpiry = data["expires_in"];
+            this.refreshToken = data["refresh_token"];
+            this.fetch = new Fetch(this.token);
             res.redirect(BASE_URL);
-            })
         });
 
         server.get("/api/validate_session", (req, res)=> {
