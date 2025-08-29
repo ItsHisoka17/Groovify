@@ -9,6 +9,7 @@ class Authenticate {
 
     redirAuthorize(){ 
         let scope = SCOPES.join(" ");
+        scope = encodeURIComponent(scope);
         let state = Utils.generateState(16);
         let authUrl = (`${BASE_AUTHORIZATION_URL}${
             Utils.querystringify({
