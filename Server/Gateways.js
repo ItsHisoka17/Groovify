@@ -15,6 +15,7 @@ class Gateway {
         server.use(express.json());
         server.use(cookies());
         server.use(cors({origin: BASE_URL, credentials: true}));
+        this.loggedIn = false;
 
         server.get("/authorize", (req, res)=> {
             new Authenticate(req, res)
@@ -27,19 +28,19 @@ class Gateway {
             this.token = data["access_token"];
             this.tokenExpiry = data["expires_in"];
             this.refreshToken = data["refresh_token"];
+            this.loggedIn = true;
             this.fetch = new Fetch(this.token);
             res.redirect(BASE_URL);
         });
 
         server.get("/api/validate_session", (req, res)=> {
-            if (this.token) {
+            console.log(this.loggedIn)
+            if (this.loggedIn) {
                 res.set({"Access-Control-Allow-Origin": "https://groovify.space",
 "Access-Control-Allow-Credentials": true})
                 res.status(200).json({status: 200});
-            } else {
-                res.status(401).json({status: 401});
             };
-        })
+        });
 
         server.get("/api", (req, res)=> {
             let requestedData = req.query;

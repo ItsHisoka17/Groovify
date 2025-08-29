@@ -16,7 +16,6 @@ function App() {
         });
         //Tests
         console.log(response);
-        alert(response);
         if (response.status === 200) {
           setLoggedIn(true);
         } else {
