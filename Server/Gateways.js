@@ -18,7 +18,6 @@ class Gateway {
         server.get("/authorize/callback", async (req, res)=> {
             let { code } = req.query;
             let data = await new Authenticate(req, res).fetchToken(code);
-            console.log(data.tokenExpiry)
             this.token = data["access_token"];
             this.tokenExpiry = data["expires_in"];
             this.refreshToken = data["refresh_token"];

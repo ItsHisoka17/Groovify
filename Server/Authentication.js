@@ -23,13 +23,13 @@ class Authenticate {
         this.response.redirect(authUrl);
     };
 
-    fetchToken(code){
+    async fetchToken(code){
         let body = new URLSearchParams({
                 code,
                 grant_type: "authorization_code",
                 redirect_uri: REDIRECT_URI
             });
-        return fetch(TOKEN_FETCH_URL, {
+        let res = await fetch(TOKEN_FETCH_URL, {
             method: "POST",
             body: body.toString(),
             headers: {
@@ -37,18 +37,15 @@ class Authenticate {
                 "Authorization": `Basic ${new Buffer.from(CLIENT_ID + ":" + CLIENT_KEY).toString("base64")}`
             },
         })
-        .then((res)=> {
             if (res.status!==200){
                 console.error(new RequestError(`TOKEN FETCH FAILED | STATUS: ${res.status} | RAW RESPONSE: ${res}`));
                 this.response.status(res.status);
                 this.response.json({error: `TOKEN FETCH FAILED | STATUS: ${res.status} | RAW RESPONSE: ${res}`, status: res.status});
                 return;
             };
-            return res.json()
-            .then((body)=> {
-                return body;
-            });
-        });
+            console.log(res);
+            let data = await res.json();
+            console.log(data)
     };
 };
 
