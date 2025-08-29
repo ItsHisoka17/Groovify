@@ -27,9 +27,9 @@ class Gateway {
 
         server.get("/api/validate_session", (req, res)=> {
             if (this.token) {
-                res.
-                json({status: 200}).
-                status(200);
+                res.set({"Access-Control-Allow-Origin": "https://groovify.space",
+"Access-Control-Allow-Credentials": true})
+                res.json({status: 200}).status(200);
             } else {
                 res.
                 json({status: 401}).
