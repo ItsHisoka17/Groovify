@@ -2,7 +2,6 @@ const { BASE_URL, SESSIONID } = require("../Constants/Constants");
 const Authenticate = require("./Authentication");
 const Fetch = require("./Fetch");
 const express = require("express");
-const session = require("express-session");
 const path = require("path");
 const cookies = require("cookie-parser");
 const cors = require("cors");
@@ -30,14 +29,15 @@ class Gateway {
             res.cookie("token", data["access_token"], {
                 httpOnly: true,
                 secure: true,
-                maxAge: data["expires_in"]*1000
+                maxAge: data["expires_in"]*1000,
+                sameSite: "None"
             });
+            res.redirect(BASE_URL);
         });
 
         server.get("/api/validate_session", (req, res)=> {
+            console.log(req.cookies);
             if (req.cookies.token) {
-                res.set({"Access-Control-Allow-Origin": "https://groovify.space",
-"Access-Control-Allow-Credentials": true})
                 res.status(200).json({status: 200});
             } else {
                 res.status(401).json({status: 401});
