@@ -6,6 +6,7 @@ const Constants = {
     BASE_AUTHORIZATION_URL: "https://accounts.spotify.com/authorize",
     TOKEN_FETCH_URL: "https://accounts.spotify.com/api/token",
     BASE_API_URL: "https://api.spotify.com/v1",
+    OPEN_SPOTIFY_URL: "https://open.spotify.com/",
     SCOPES: [
         "user-read-private",
         "user-read-email",

@@ -1,4 +1,4 @@
-const { BASE_API_URL } = require("../Constants/Constants");
+const { BASE_API_URL, OPEN_SPOTIFY_URL } = require("../Constants/Constants");
 
 class Fetch {
     constructor(){
@@ -13,11 +13,12 @@ class Fetch {
         });
         let responseData = await response.json();
         let {display_name, uri, followers} = responseData;
+        let url = `${OPEN_SPOTIFY_URL}user/${uri.split(":")[2]}`;
         let image = responseData.images[0].url;
         let data = {
             name: display_name,
             image,
-            uri,
+            url,
             followers: followers["total"]
         };
         return data;

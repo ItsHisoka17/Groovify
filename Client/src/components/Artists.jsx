@@ -1,17 +1,17 @@
 import "../styles/Artists.css";
 
-export default function Artists({ artists }) {
+export default function TopArtists({ artists }) {
   return (
-    <div className="artists-container">
-      <h3>Your Top Artists</h3>
-      <div className="artists-grid">
-        {artists.map((a, i) => (
-          <a href={a.url} key={i} className="artist-card" target="_blank" rel="noreferrer">
-            <img src={a.image} alt={a.name} />
-            <h4>{a.name}</h4>
-          </a>
+    <div className="artists-container slide-up">
+      <h3 className="section-title gradient-text">Your Top Artists</h3>
+      <ul className="artists-list">
+        {artists.map((artist, i) => (
+          <li key={i} className="artist-card hover-scale">
+            <img src={artist.image} alt={artist.name} className="artist-img" />
+            <p className="artist-name">{artist.name}</p>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

@@ -1,53 +1,61 @@
 .tracks-container {
-  margin-top: 40px;
-  color: #fff;
+  background: #202020;
+  padding: 1.5rem;
+  border-radius: 16px;
+  width: 350px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  animation: slideUp 1s ease;
 }
 
-.tracks-container h3 {
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  font-weight: 700;
+.section-title {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
 }
 
-.tracks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
+.tracks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .track-card {
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  overflow: hidden;
-  text-decoration: none;
-  color: #fff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .track-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transform: translateX(8px);
+  background: rgba(255,255,255,0.1);
 }
 
-.track-card img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
+.track-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  margin-right: 1rem;
 }
 
-.track-card div {
-  padding: 12px;
+.track-info {
+  display: flex;
+  flex-direction: column;
 }
 
-.track-card h4 {
-  margin: 0 0 4px;
-  font-size: 1rem;
-  font-weight: 700;
+.track-name {
+  font-weight: bold;
+  color: white;
 }
 
-.track-card p {
-  margin: 0;
-  font-size: 0.85rem;
-  opacity: 0.8;
+.track-artist {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }

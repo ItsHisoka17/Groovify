@@ -14,15 +14,15 @@ export default function Home() {
     async function fetchData() {
       try {
         const [userRes, tracksRes, artistsRes] = await Promise.all([
-          fetch("https://groovify.space/api?data=user_data", {credentials:"include"}),
-          fetch("https://groovify.space/api?data=top_tracks", {credentials:"include"}),
-          fetch("https://groovify.space/api?data=top_artists", {credentials:"include"}),
+          fetch("https://groovify.space/api?data=user_data", { credentials: "include" }),
+          fetch("https://groovify.space/api?data=top_tracks", { credentials: "include" }),
+          fetch("https://groovify.space/api?data=top_artists", { credentials: "include" }),
         ]);
 
         if (userRes.status !== 200) {
           window.location.href = "/login";
           return;
-        };
+        }
 
         const userData = await userRes.json();
         const trackData = await tracksRes.json();
@@ -42,14 +42,14 @@ export default function Home() {
   if (loading) {
     return (
       <div className="loading-screen">
-        <h2>Loading your vibe...</h2>
+        <h2 className="loading-text">Loading your vibe...</h2>
         <div className="spinner"></div>
       </div>
     );
   }
 
   return (
-    <div className="home-container">
+    <div className="home-container fade-in">
       <ProfileCard user={user} />
       <section className="data-sections">
         <TopTracks tracks={tracks} />

@@ -36,7 +36,6 @@ class Gateway {
         });
 
         server.get("/api/validate_session", (req, res)=> {
-            console.log(req.cookies);
             if (req.cookies.token) {
                 res.status(200).json({status: 200});
             } else {
@@ -53,7 +52,7 @@ class Gateway {
             let dataJson;
             switch(requestedData.data){
                 case "user_data": {
-                    dataJson = await this.fetch.fetchArtists(token);
+                    dataJson = await this.fetch.fetchUserData(token);
                     break;
                 };
 

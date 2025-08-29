@@ -1,15 +1,13 @@
 import "../styles/Profile.css";
 
-export default function Profile({ user }) {
-  console.log(user);
+export default function ProfileCard({ user }) {
   return (
-    <div className="profile-card">
-      <img src={user.image} alt={user.name} className="profile-img" />
-      <h2>{user.name}</h2>
-      <p>{user.followers} followers</p>
-      <a href={user.uri} target="_blank" rel="noreferrer">
-        View on Spotify
+    <div className="profile-card bounce-in">
+      <a href={user.url} target="_blank" rel="noreferrer">
+        <img src={user.image} alt="Profile" className="profile-img glow" />
       </a>
+      <h2 className="profile-name gradient-text">{user.name}</h2>
+      <p className="profile-followers">{user.followers} followers</p>
     </div>
   );
 }
