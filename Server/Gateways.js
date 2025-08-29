@@ -3,12 +3,16 @@ const Authenticate = require("./Authentication");
 const Fetch = require("./Fetch");
 const express = require("express");
 const path = require("path");
+const cookies = require("cookie-parser");
+const cors = require("cors");
 
 class Gateway {
     constructor(server){
         console.log("Gateway initialized...");
 
         server.use(express.json());
+        server.use(cookies());
+        server.use(cors({origin: BASE_URL, credentials: true}));
 
         server.get("/authorize", (req, res)=> {
             new Authenticate(req, res)
@@ -27,6 +31,7 @@ class Gateway {
 
         server.get("/api/validate_session", (req, res)=> {
             if (this.token) {
+                console.log(this.token);
                 res.set({"Access-Control-Allow-Origin": "https://groovify.space",
 "Access-Control-Allow-Credentials": true})
                 res.json({status: 200}).status(200);

@@ -13,7 +13,7 @@ const Constants = {
         "user-read-recently-played",
         "user-follow-read"
     ],
-    BASE_URL: "https://groovify.space/",
+    BASE_URL: "https://groovify.space",
     REDIRECT_URI: "https://groovify.space/authorize/callback",
     BACKEND_API_URL: "https://groovify.space/api",
     CLIENT_ID,
