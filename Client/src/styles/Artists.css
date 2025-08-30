@@ -1,32 +1,35 @@
-.artists-container {
-  margin-top: 24px;
+.artists-container{ width:100%; display:flex; flex-direction:column; gap:12px; }
+
+.artists-container h3{ margin:0; color:var(--muted); font-size:1rem; font-weight:700; }
+
+.artists-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; margin-top:6px; }
+
+.artist-tile{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px;
+  border-radius:12px;
+  background: linear-gradient(90deg, rgba(139,123,255,0.03), rgba(87,243,255,0.02));
+  border:1px solid rgba(255,255,255,0.02);
+  transition: transform .18s ease, box-shadow .18s ease;
+  text-decoration:none;
+  color:inherit;
 }
-.artists-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+.artist-tile:hover{
+  transform:translateY(-6px);
+  box-shadow: 0 18px 46px rgba(139,123,255,0.06);
+  background: linear-gradient(90deg, rgba(139,123,255,0.06), rgba(87,243,255,0.03));
 }
-.artist-card {
-  background: linear-gradient(145deg, #d9a066, #8b5e3c);
-  border-radius: 16px;
-  text-align: center;
-  padding: 14px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.artist-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.5);
-}
-.artist-card img {
-  width: 100%;
-  border-radius: 50%;
-  border: 2px solid #5b3820;
-  margin-bottom: 8px;
-  object-fit: cover;
-}
-.artist-card h4 {
-  font-size: 1.1rem;
-  color: #fff8f0;
-  margin: 0;
+
+.artist-thumb{ width:56px; height:56px; border-radius:10px; overflow:hidden; flex-shrink:0; background:rgba(0,0,0,0.06); }
+.artist-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+.artist-meta h4{ margin:0; font-size:0.95rem; color:var(--muted); font-weight:700; }
+
+.artist-tile.placeholder{ height:72px; background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.03)); border-radius:12px; }
+
+@media (max-width:1100px){
+  .artists-grid{ grid-template-columns: repeat(3, 1fr); }
+  .artist-thumb{ width:48px; height:48px; }
 }

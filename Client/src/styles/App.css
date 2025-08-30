@@ -1,75 +1,114 @@
-.app-container {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(145deg, #8b5e3c, #d9a066, #a66f42);
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease-in-out infinite;
-  font-family: 'Quicksand', sans-serif;
+:root{
+  --bg-1: #0b1020;       
+  --bg-2: #071227;       
+  --accent: #57f3ff;     
+  --accent-2: #8b7bff;   
+  --glass: rgba(255,255,255,0.04);
+  --glass-2: rgba(255,255,255,0.08);
+  --card-bg: rgba(10,12,20,0.6);
+  --muted: rgba(255,255,255,0.75);
+  --radius: 18px;
+  --shadow: 0 10px 40px rgba(0,0,0,0.6);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-.overlay-card {
-  background: rgba(255, 245, 230, 0.92);
-  padding: 60px 50px;
-  border-radius: 32px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
-  text-align: center;
-  max-width: 480px;
-  animation: fadeIn 1s ease forwards;
+.app-canvas{
+  min-height:100vh;
+  min-width:100vw;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(139,123,255,0.06), transparent 6%),
+              radial-gradient(1000px 500px at 90% 80%, rgba(87,243,255,0.04), transparent 6%),
+              linear-gradient(120deg,var(--bg-1), var(--bg-2) 60%);
 }
 
-.logo {
-  font-size: clamp(48px, 8vw, 72px);
-  font-weight: 900;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(45deg, #a66f42, #d9a066, #8b5e3c);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  margin-bottom: 20px;
+.ambient-layer{
+  position: absolute;
+  inset: -10%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(139,123,255,0.06), transparent 12%),
+    radial-gradient(circle at 80% 70%, rgba(87,243,255,0.05), transparent 12%);
+  filter: blur(18px) saturate(120%);
+  animation: ambientWave 18s linear infinite;
+  pointer-events: none;
+  z-index:0;
 }
 
-.vinyl {
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, #fff 0 8%, #8b5e3c 10%, #a66f42 25%, #4a2b1f 100%);
-  box-shadow: inset 0 0 0 2px #3b2a1f;
-  animation: spin 4s linear infinite;
+@keyframes ambientWave{
+  0%{ transform: translateY(0) scale(1); opacity:0.95; }
+  50%{ transform: translateY(-6px) scale(1.02); opacity:1; }
+  100%{ transform: translateY(0) scale(1); opacity:0.95; }
 }
 
-.tagline {
-  font-size: 1.1em;
-  color: #4a2b1f;
-  margin-bottom: 30px;
+.center-card{
+  z-index: 2;
+  width: min(720px, 92vw);
+  max-width: 920px;
+  padding: 36px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: var(--shadow);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+  backdrop-filter: blur(8px) saturate(120%);
 }
 
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid #d9a066;
-  border-top-color: #8b5e3c;
-  border-radius: 50%;
-  animation: spin 1.5s linear infinite;
-  margin: 0 auto;
+.loading-copy{
+  color: var(--muted);
+  font-weight:600;
+  letter-spacing:0.2px;
+  font-size:1.05rem;
+  margin: 0;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.holo-loader{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:120px;
+  height:120px;
+  position:relative;
+}
+.holo-ring{
+  width:120px;
+  height:120px;
+  transform-origin:center;
+  animation: ringSpin 2.6s linear infinite;
+  filter: drop-shadow(0 8px 20px rgba(139,123,255,0.08));
+}
+@keyframes ringSpin{
+  0%{ transform: rotate(0deg); opacity:1 }
+  50%{ transform: rotate(180deg); opacity:0.95 }
+  100%{ transform: rotate(360deg); opacity:1 }
+}
+.holo-pulse{
+  position:absolute;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background: radial-gradient(circle, var(--accent) 0%, rgba(139,123,255,0.6) 50%, transparent 70%);
+  box-shadow: 0 6px 24px rgba(87,243,255,0.12), 0 0 36px rgba(139,123,255,0.06);
+  animation: pulseGrow 1.6s ease-in-out infinite;
+}
+@keyframes pulseGrow{
+  0%{ transform: scale(0.9); opacity:0.95 }
+  50%{ transform: scale(1.25); opacity:1 }
+  100%{ transform: scale(0.9); opacity:0.95 }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.micro-copy{
+  color: rgba(255,255,255,0.65);
+  font-size:0.9rem;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@media (max-width:880px){
+  .center-card{ padding: 22px; gap:12px; width: min(92vw,640px) }
+  .holo-loader{ width:96px; height:96px }
+  .holo-ring{ width:96px; height:96px }
 }
