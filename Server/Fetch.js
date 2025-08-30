@@ -1,4 +1,5 @@
 const { BASE_API_URL, OPEN_SPOTIFY_URL } = require("../Constants/Constants");
+const { RequestError } = require("../Structures/Error")
 
 class Fetch {
     constructor(){
@@ -11,6 +12,9 @@ class Fetch {
                 "Authorization": `Bearer ${token}`
             }
         });
+        if (!response.ok){
+            console.error(new RequestError(await response.text()));
+        };
         let responseData = await response.json();
         let {display_name, uri, followers} = responseData;
         let url = `${OPEN_SPOTIFY_URL}user/${uri.split(":")[2]}`;
@@ -31,6 +35,9 @@ class Fetch {
                 "Authorization": `Bearer ${token}`
             }
         });
+        if (!response.ok){
+            console.error(new RequestError(await response.text()));
+        };
         let { items } = await response.json();
         let tracksArray = [];
         for (let t of items) {
@@ -57,6 +64,9 @@ class Fetch {
                 "Authorization": `Bearer ${token}`
             }
         });
+        if (!response.ok){
+            console.error(new RequestError(await response.text()));
+        };
         let { items } = await response.json();
         let artistArray = [];
         for (let a of items) {
