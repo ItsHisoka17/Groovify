@@ -1,13 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Groovify</title>
-    <link rel="icon"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Groovify — Visualize your Spotify Listening</title>
+
+    <meta name="description" content="Groovify turns your Spotify listening into a living visual experience — personalized art, top tracks and artists, and a vibrant interactive dashboard powered by the Spotify Web API." />
+    <meta name="keywords" content="Spotify, music visualization, top tracks, top artists, music dashboard, Groovify, web app, React" />
+    <meta name="author" content="Groovify" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href="https://groovify.space/" />
+    <meta name="theme-color" content="#00FFF6" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Groovify — Visualize your Spotify Listening" />
+    <meta property="og:description" content="Turn your Spotify listening into a living artwork. See your top tracks, artists and a visual journey personalised to you." />
+    <meta property="og:url" content="https://groovify.space/" />
+    <meta property="og:site_name" content="Groovify" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image:alt" content="Groovify - visual music dashboard screenshot" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Groovify — Visualize your Spotify Listening" />
+    <meta name="twitter:description" content="Turn your Spotify listening into a living artwork. See your top tracks, artists and a visual journey personalised to you." />
+    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:site" content="@groovify" />
+
+    <link rel="icon" href="/public/icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Groovify",
+      "url": "https://groovify.space/",
+      "description": "Groovify turns your Spotify listening into a living visual experience with top tracks, artists, and interactive dashboards.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Groovify"
+      }
+    }
+    </script>
+
   </head>
+
   <body>
+    <noscript>
+      <strong>JavaScript is required to run Groovify. Please enable JavaScript in your browser.</strong>
+    </noscript>
+
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+
+    <div class="sr-only" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+      Groovify — Visualize your Spotify Listening. Visit https://groovify.space/
+    </div>
   </body>
 </html>
