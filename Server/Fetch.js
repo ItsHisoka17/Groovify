@@ -38,10 +38,11 @@ class Fetch {
             for (let a of t.artists){
                 artists.push(a.name);
             };
+        let url = `${OPEN_SPOTIFY_URL}/track/${t.uri.split(":")[2]}`;    
         let image = t.album.images[0]["url"];
             tracksArray.push({
                 name: t.name,
-                url: t.uri,
+                url,
                 artists,
                 image,
             });
@@ -59,10 +60,11 @@ class Fetch {
         let { items } = await response.json();
         let artistArray = [];
         for (let a of items) {
+            let url = `${OPEN_SPOTIFY_URL}/artist/${a.uri.split(":")[2]}`;
             let image = a.images[0]["url"];
             artistArray.push({
                 name: a.name,
-                url: a.uri,
+                url,
                 image
             });
         };
