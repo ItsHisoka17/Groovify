@@ -1,31 +1,32 @@
 .artists-container {
-  margin-top: 20px;
+  margin-top: 24px;
 }
 .artists-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  gap: 20px;
 }
 .artist-card {
-  background: rgba(222, 184, 135, 0.85);
+  background: linear-gradient(145deg, #d9a066, #8b5e3c);
   border-radius: 16px;
   text-align: center;
-  padding: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  padding: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .artist-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.5);
 }
 .artist-card img {
   width: 100%;
   border-radius: 50%;
-  border: 2px solid #8b5e3c;
+  border: 2px solid #5b3820;
   margin-bottom: 8px;
+  object-fit: cover;
 }
 .artist-card h4 {
-  font-size: 1rem;
-  color: #4a2b1f;
+  font-size: 1.1rem;
+  color: #fff8f0;
   margin: 0;
 }
