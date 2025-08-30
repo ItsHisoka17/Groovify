@@ -68,6 +68,17 @@ class Gateway {
             };
             res.json(dataJson);
         });
+
+        server.get("/api/logout", (req, res)=> {
+            if (req.cookies.token) {
+                res.status(200);
+                res.clearCookie("token");
+                res.redirect(BASE_URL);
+            } else {
+                res.redirect(BASE_URL);
+            }
+        })
+
         server.use(express.static(path.join(process.cwd(), "Client", "dist")));
         server.get(/^(?!\/(api|authorize)).*/, (req, res)=> {
             res.sendFile(path.join(process.cwd(), "Client", "dist", "index.html"));
