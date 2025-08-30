@@ -1,5 +1,5 @@
 import React from "react";
-import "..styles/Login.css";
+import "../styles/Login.css";
 
 const API_BASE =
   "https://groovify.space/authorize";
