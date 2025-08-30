@@ -1,32 +1,23 @@
-import React from "react";
 import "../styles/Tracks.css";
 
 export default function Tracks({ tracks }) {
-  if (!tracks) return null;
-
   return (
-    <div className="tracks-board-content">
-      <div className="row top">
-        {tracks.slice(0,1).map((t,i)=>(
-          <a href={t.url} key={i} target="_blank" rel="noreferrer" className="track-card">
-            <img src={t.image} alt={t.name}/>
-            <h4>{t.name}</h4>
-          </a>
-        ))}
-      </div>
-      <div className="row middle">
-        {tracks.slice(1,3).map((t,i)=>(
-          <a href={t.url} key={i} target="_blank" rel="noreferrer" className="track-card">
-            <img src={t.image} alt={t.name}/>
-            <h4>{t.name}</h4>
-          </a>
-        ))}
-      </div>
-      <div className="row bottom">
-        {tracks.slice(3,6).map((t,i)=>(
-          <a href={t.url} key={i} target="_blank" rel="noreferrer" className="track-card">
-            <img src={t.image} alt={t.name}/>
-            <h4>{t.name}</h4>
+    <div className="tracks-container">
+      <h3>Your Top Tracks</h3>
+      <div className="tracks-grid">
+        {tracks.map((track, i) => (
+          <a
+            key={i}
+            href={track.url}
+            target="_blank"
+            rel="noreferrer"
+            className="track-card"
+          >
+            <img src={track.image} alt={track.name} />
+            <div>
+              <h4>{track.name}</h4>
+              <p>{track.artists.join(", ")}</p>
+            </div>
           </a>
         ))}
       </div>

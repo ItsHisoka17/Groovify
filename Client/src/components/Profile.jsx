@@ -1,9 +1,6 @@
-import React from "react";
 import "../styles/Profile.css";
 
 export default function Profile({ user }) {
-  if (!user) return null;
-
   return (
     <div className="profile-card">
       <img src={user.image} alt={user.name} className="profile-img" />

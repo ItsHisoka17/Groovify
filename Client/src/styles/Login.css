@@ -1,64 +1,102 @@
 .login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-  background: linear-gradient(
-    135deg,
-    #2f5233,
-    #3a5a40,
-    #588157,
-    #a3b18a
-  );
+  width: 100vw;
+  background: linear-gradient(135deg, #5a3e36, #8c6b48, #c9a37f, #f0d8b6);
   background-size: 400% 400%;
-  animation: gradientShift 18s ease infinite;
-  font-family: 'Poppins', sans-serif;
+  animation: gradientMove 20s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.login-card {
-  background: rgba(255, 255, 255, 0.1);
+.overlay {
+  width: min(680px, 92vw);
+  padding: 56px 40px;
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 3rem 4rem;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
   text-align: center;
-  color: #fefae0;
 }
 
-.login-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: #fefae0;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+.logo {
+  font-size: clamp(48px, 8vw, 72px);
+  font-weight: 900;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(45deg, #f5d6b4, #a37b5c, #5a3e36);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.login-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #d8f3dc;
+.vinyl {
+  width: 0.95em;
+  height: 0.95em;
+  display: inline-block;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #fff 0 6%, transparent 6%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 7%, transparent 8%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 12%, transparent 13%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06) 18%, transparent 19%),
+    #3e2a21;
+  box-shadow: inset 0 0 0 2px #000, inset 0 0 18px rgba(255,255,255,0.08);
+  animation: spin 4.5s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.tagline {
+  margin: 14px 0 28px;
+  color: rgba(255,255,255,0.9);
+  font-size: clamp(14px, 2.6vw, 18px);
 }
 
 .login-button {
-  background: linear-gradient(135deg, #6a994e, #386641);
+  appearance: none;
   border: none;
-  padding: 0.9rem 2rem;
-  font-size: 1.1rem;
-  border-radius: 50px;
-  color: #fff;
-  font-weight: 600;
+  outline: none;
   cursor: pointer;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  color: #3e2a21;
+  background: #f5d6b4;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+  box-shadow: 0 10px 24px rgba(245,214,180,0.4);
 }
 
 .login-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  background: linear-gradient(135deg, #a3b18a, #588157);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(245,214,180,0.5);
+  background: #e0b87c;
+}
+
+.spotify-icon {
+  width: 20px;
+  height: 20px;
+  color: #3e2a21;
+}
+
+.footnote {
+  margin-top: 18px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
 }
