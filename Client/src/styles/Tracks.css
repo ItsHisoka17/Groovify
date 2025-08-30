@@ -1,47 +1,57 @@
 .tracks-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  font-family: 'Georgia', serif;
+  gap: 20px;
+}
+
+.tracks-container h3 {
+  color: #4a2b1f;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .tracks-grid {
-  display: grid;
-  gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .track-card {
-  display: flex;
-  background: linear-gradient(145deg, #7d5a3c, #a07856);
+  background: rgba(245, 230, 210, 0.95);
   border-radius: 20px;
-  padding: 12px;
-  align-items: center;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.25);
+  overflow: hidden;
+  width: 180px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
-  color: #fff3e0;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  transition: all 0.2s ease;
+  color: inherit;
 }
 
 .track-card:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(145deg, #8c6b48, #b08b6a);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
 .track-card img {
-  width: 80px;
-  height: 80px;
-  border-radius: 12px;
+  width: 100%;
+  height: 180px;
   object-fit: cover;
-  margin-right: 15px;
 }
 
-.track-card div h4 {
+.track-info {
+  padding: 10px 8px;
+}
+
+.track-info h4 {
   margin: 0;
-  font-size: 1.1em;
+  color: #4a2b1f;
+  font-size: 1em;
 }
 
-.track-card div p {
-  margin: 2px 0 0;
+.track-info p {
+  margin: 4px 0 0;
+  color: #6b4b30;
   font-size: 0.9em;
-  color: #ffe6c1;
 }
