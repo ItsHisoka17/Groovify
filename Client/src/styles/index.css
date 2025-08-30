@@ -1,13 +1,17 @@
 :root{
-  --bg-1: #040617;
-  --bg-2: #07112b;
-  --accent: #00fff6;
-  --accent-2: #8a6bff;
-  --muted: rgba(255,255,255,0.9);
+  --bg-1: #030518;           
+  --bg-2: #08102a;           
+  --neon-cyan: #00FFF6;      
+  --neon-magenta: #FF2D95;   
+  --neon-violet: #7C5CFF;    
+  --neon-lime: #00FF9C;      
+  --accent: var(--neon-cyan);
+  --accent-2: var(--neon-violet);
+  --muted: rgba(255,255,255,0.95);
   --glass: rgba(255,255,255,0.03);
   --glass-2: rgba(255,255,255,0.06);
   --radius: 14px;
-  --shadow: 0 14px 40px rgba(3,6,18,0.7);
+  --shadow: 0 18px 60px rgba(2,6,20,0.75);
   --ui-padding: 12px;
   color-scheme: dark;
   -webkit-font-smoothing: antialiased;
@@ -19,25 +23,23 @@
 html, body, #root { height: 100%; }
 body {
   margin: 0;
-  background: linear-gradient(120deg, var(--bg-1), var(--bg-2) 60%);
+  background:
+    radial-gradient(900px 420px at 12% 18%, rgba(124,92,255,0.06), transparent 6%),
+    radial-gradient(700px 350px at 88% 82%, rgba(255,45,149,0.05), transparent 6%),
+    linear-gradient(120deg, var(--bg-1), var(--bg-2) 60%);
   color: var(--muted);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 420ms ease;
 }
 
-a { color: var(--accent); text-decoration: none; }
-a:hover, a:focus { text-decoration: underline; color: var(--accent-2); }
-button {
-  font-family: inherit;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  color: inherit;
-}
+a { color: var(--accent); text-decoration: none; transition: color 180ms ease; }
+a:hover, a:focus { color: var(--neon-magenta); text-decoration: underline; }
 
-:focus { outline: none; }
-:focus-visible {
-  outline: 3px solid rgba(0,255,246,0.14);
+button { font-family: inherit; cursor: pointer; background: transparent; border: none; color: inherit; }
+
+:focus-visible{
+  outline: 3px solid rgba(0,255,246,0.18);
   outline-offset: 4px;
   border-radius: 6px;
 }
@@ -48,6 +50,19 @@ button {
 @media (max-width: 880px) {
   :root { --ui-padding: 10px; }
   body { font-size: 15px; }
+}
+
+.neon-bg {
+  background: linear-gradient(120deg,
+    rgba(var(--neon-cyan-r,0),0.06) 0%,
+    rgba(124,92,255,0.06) 40%,
+    rgba(255,45,149,0.04) 100%);
+}
+
+.glow {
+  text-shadow:
+    0 4px 18px rgba(0,255,246,0.08),
+    0 10px 48px rgba(124,92,255,0.04);
 }
 
 @media (prefers-color-scheme: light){
