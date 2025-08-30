@@ -1,62 +1,30 @@
-import { useEffect, useState } from "react";
-import "../styles/Home.css";
-import ProfileCard from "../components/Profile";
-import TopTracks from "../components/Tracks";
-import TopArtists from "../components/Artists";
+import React from "react";
+import Profile from "../components/Profile";
+import Artists from "../components/Artists";
+import Tracks from "../components/Tracks";
 import Logo from "../components/Logo";
+import "../styles/Home.css";
 
-export default function Home() {
-  const [user, setUser] = useState(null);
-  const [tracks, setTracks] = useState([]);
-  const [artists, setArtists] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const [userRes, tracksRes, artistsRes] = await Promise.all([
-          fetch("https://groovify.space/api?data=user_data", { credentials: "include" }),
-          fetch("https://groovify.space/api?data=top_tracks", { credentials: "include" }),
-          fetch("https://groovify.space/api?data=top_artists", { credentials: "include" }),
-        ]);
-
-        if (userRes.status !== 200) {
-          window.location.href = "/login";
-          return;
-        }
-
-        const userData = await userRes.json();
-        const trackData = await tracksRes.json();
-        const artistData = await artistsRes.json();
-
-        setUser(userData);
-        setTracks(trackData);
-        setArtists(artistData);
-        setLoading(false);
-      } catch (err) {
-        console.error("Failed to fetch data:", err);
-      }
-    }
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="loading-screen">
-        <h2 className="loading-text">Loading your vibe...</h2>
-        <div className="spinner"></div>
-      </div>
-    );
-  }
-
+const Home = () => {
   return (
-    <div className="home-container fade-in">
+    <div className="home-container">
       <Logo />
-      <ProfileCard user={user} />
-      <section className="data-sections">
-        <TopTracks tracks={tracks} />
-        <TopArtists artists={artists} />
-      </section>
+      <div className="boards">
+        <div className="board profile-board">
+          <h2>Profile</h2>
+          <Profile />
+        </div>
+        <div className="board artists-board">
+          <h2>Top Artists</h2>
+          <Artists />
+        </div>
+        <div className="board tracks-board">
+          <h2>Top Tracks</h2>
+          <Tracks />
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default Home;

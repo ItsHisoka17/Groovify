@@ -1,37 +1,45 @@
 .profile-card {
-  background: rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(120, 85, 50, 0.8);
+  border-radius: 20px;
   padding: 1.5rem;
-  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  color: #f5f2e7;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(29, 185, 84, 0.5), 0 0 15px #00ffe5, 0 0 25px #ff00ff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.profile-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px #1db954, 0 0 20px #00ffe5, 0 0 35px #ff00ff;
+  width: 220px;
 }
 
 .profile-img {
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1rem;
-  border: 3px solid #1db954;
+  border: 3px solid #d8c3a5;
 }
 
-.profile-name {
-  font-size: 1.8rem;
+.profile-card h2 {
   margin: 0.5rem 0;
-  background: linear-gradient(90deg, #1DB954, #00FFE5, #FF00FF);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  text-shadow: 0 0 10px rgba(255,255,255,0.2);
+  font-size: 1.3rem;
 }
 
-.profile-followers {
-  color: #ccc;
+.profile-card p {
+  margin: 0.3rem 0 0.7rem;
+  font-size: 0.9rem;
+}
+
+.profile-card a {
+  text-decoration: none;
+  color: #f5f2e7;
+  background: #6a994e;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.profile-card a:hover {
+  background: #a7c957;
 }

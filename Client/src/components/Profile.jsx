@@ -1,13 +1,17 @@
+import React from "react";
 import "../styles/Profile.css";
 
-export default function ProfileCard({ user }) {
+export default function Profile({ user }) {
+  if (!user) return null;
+
   return (
-    <div className="profile-card bounce-in">
+    <div className="profile-card">
+      <img src={user.image} alt={user.name} className="profile-img" />
+      <h2>{user.name}</h2>
+      <p>{user.followers} followers</p>
       <a href={user.url} target="_blank" rel="noreferrer">
-        <img src={user.image} alt="Profile" className="profile-img glow" />
+        View on Spotify
       </a>
-      <h2 className="profile-name gradient-text">{user.name}</h2>
-      <p className="profile-followers">{user.followers} followers</p>
     </div>
   );
 }

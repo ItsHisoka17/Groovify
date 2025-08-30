@@ -1,20 +1,35 @@
+import React from "react";
 import "../styles/Tracks.css";
 
-export default function TopTracks({ tracks }) {
+export default function Tracks({ tracks }) {
+  if (!tracks) return null;
+
   return (
-    <div className="tracks-container slide-up">
-      <h3 className="section-title gradient-text">Your Top Tracks</h3>
-      <ul className="tracks-list">
-        {tracks.map((track, i) => (
-          <li key={i} className="track-card hover-scale">
-            <img src={track.image} alt={track.name} className="track-img" />
-            <div className="track-info">
-              <p className="track-name">{track.name}</p>
-              <p className="track-artist">{track.artists.join(" ")}</p>
-            </div>
-          </li>
+    <div className="tracks-board-content">
+      <div className="row top">
+        {tracks.slice(0,1).map((t,i)=>(
+          <a href={t.url} key={i} target="_blank" rel="noreferrer" className="track-card">
+            <img src={t.image} alt={t.name}/>
+            <h4>{t.name}</h4>
+          </a>
         ))}
-      </ul>
+      </div>
+      <div className="row middle">
+        {tracks.slice(1,3).map((t,i)=>(
+          <a href={t.url} key={i} target="_blank" rel="noreferrer" className="track-card">
+            <img src={t.image} alt={t.name}/>
+            <h4>{t.name}</h4>
+          </a>
+        ))}
+      </div>
+      <div className="row bottom">
+        {tracks.slice(3,6).map((t,i)=>(
+          <a href={t.url} key={i} target="_blank" rel="noreferrer" className="track-card">
+            <img src={t.image} alt={t.name}/>
+            <h4>{t.name}</h4>
+          </a>
+        ))}
+      </div>
     </div>
   );
 }

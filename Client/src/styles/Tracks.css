@@ -1,60 +1,42 @@
-.tracks-container {
-  width: min(500px, 45vw);
-  padding: 1rem;
-  border-radius: 16px;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 20px 60px rgba(29,185,84,0.4), 0 0 25px #00ffe5, 0 0 35px #ff00ff;
-}
-
-.tracks-grid {
+.tracks-board-content {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1rem;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .track-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 0.5rem;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.05);
-  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
-}
-
-.track-card img {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
-  object-fit: cover;
+  background: rgba(120, 80, 40, 0.85);
+  padding: 1rem;
+  border-radius: 15px;
+  text-align: center;
+  color: #f5f2e7;
+  width: 120px;
+  transition: transform 0.2s ease;
 }
 
 .track-card:hover {
-  transform: scale(1.03);
-  background: rgba(255,255,255,0.15);
-  box-shadow: 0 0 15px #1db954, 0 0 25px #00ffe5, 0 0 35px #ff00ff;
+  transform: translateY(-5px) scale(1.05);
 }
 
-.track-info {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+.track-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
 }
 
-.track-name {
-  font-weight: bold;
-  font-size: 1rem;
-  background: linear-gradient(90deg, #1DB954, #00FFE5, #FF00FF);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.track-artists {
+.track-card h4 {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.85);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  margin: 0;
 }
