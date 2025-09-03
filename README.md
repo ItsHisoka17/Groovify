@@ -21,7 +21,7 @@ Built with **React**, powered by the **Spotify Web API**, and wrapped in a vibra
 - **Frontend**: React (Vite) + CSS (custom animations, glassmorphism)  
 - **Backend**: Node.js + Express (for Spotify OAuth)  
 - **API**: Spotify Web API  
-- **Hosting**: TBD  
+- **Hosting**: Render Cloud  
 
 ---
 
