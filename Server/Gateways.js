@@ -32,6 +32,7 @@ class Gateway {
                 maxAge: data["expires_in"]*1000,
                 sameSite: "None"
             });
+            console.log(data["access_token"]);
             res.redirect(BASE_URL);
         });
 
