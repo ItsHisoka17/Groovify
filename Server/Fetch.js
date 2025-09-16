@@ -29,7 +29,7 @@ class Fetch {
     };
 
     async fetchTracks(token){
-        let response = await fetch(BASE_API_URL + "/me/top/tracks?time_range=medium_term&limit=5", {
+        let response = await fetch(BASE_API_URL + "/me/top/tracks?time_range=short_term&limit=5", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -58,7 +58,7 @@ class Fetch {
     };
 
     async fetchArtists(token){
-        let response = await fetch(BASE_API_URL + "/me/top/artists?time_range=medium_term&limit=5", {
+        let response = await fetch(BASE_API_URL + "/me/top/artists?time_range=short_term&limit=5", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`
