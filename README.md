@@ -5,6 +5,8 @@
 Groovify is a web app that connects with your Spotify account and transforms your recent listening history into a stylish, dynamic visual experience.  
 Built with **React**, powered by the **Spotify Web API**, and wrapped in a vibrant, musical design.
 
+[screenshot](./Client/public/ss.png)
+
 ---
 
 ## ✨ Features
