@@ -1,53 +1,68 @@
-# 🎶 Groovify
+# Groovify
 
-> _Turn your Spotify listening into a visual journey._
+Groovify is a web application that transforms a user’s Spotify listening data into an interactive and visually engaging experience. By securely connecting to a Spotify account, the application presents personalized insights into listening activity through a modern, responsive interface.
 
-Groovify is a web app that connects with your Spotify account and transforms your recent listening history into a stylish, dynamic visual experience.  
-Built with **React**, powered by the **Spotify Web API**, and wrapped in a vibrant, musical design.
-
-[Here is a screenshot](./Client/public/ss.png)
+The project focuses on combining clean user experience design with real-time data from the Spotify Web API to create a polished, production-ready application.
 
 ---
 
-## ✨ Features
+## Preview
 
-- 🔑 **Spotify OAuth Login** – Connect securely with your Spotify account  
-- 🎨 **Modern UI/UX** – Glassmorphism, animated gradients, and vibrant typography  
-- 📊 **Listening Insights** – Visualize your listening activity  
-- ⚡ **Fast & Responsive** – Works beautifully on desktop and mobile  
+![Groovify Screenshot](./Client/public/ss.png)
 
 ---
 
-## 🚀 Tech Stack
+## Features
 
-- **Frontend**: React (Vite) + CSS (custom animations, glassmorphism)  
-- **Backend**: Node.js + Express (for Spotify OAuth)  
-- **API**: Spotify Web API  
-- **Hosting**: Render Cloud  
+- Secure Spotify OAuth authentication  
+- Personalized listening insights  
+- Modern, responsive user interface  
+- Optimized performance across desktop and mobile devices  
 
 ---
 
-## 🔧 Getting Started
+## Technology Stack
 
-### 1. Clone the repository
+**Frontend**
+- React (Vite)
+- Custom CSS for animations and layout
+
+**Backend**
+- Node.js
+- Express
+
+**API**
+- Spotify Web API
+
+**Hosting**
+- Render Cloud
+
+---
+
+## Getting Started
+
+### Clone the repository
 ```bash
 git clone https://github.com/itshisoka17/groovify.git
 cd groovify
 ```
-### 2. Install dependencies
+
+### Install Dependencies
 ```bash
 npm install
 ```
-### 3. Run frontend
+
+### Run Frontend Only
 ```bash
 npm run dev
 ```
-### 4. Run backend
+
+### Run Application
 ```bash
 node .
 ```
 
+## License
+Apache License 2.0
 
-Apache 2.0 License  
-
-Copyright (c) 2025 Jxdn  
+Copyright © 2025 Jxdn
