@@ -36,11 +36,14 @@ One day I was having a debate over music taste with my girlfriend, and the idea 
 **Frontend**
 - React (Vite)
 - Custom CSS (animations, layout, styling)
+
 **Backend**
 - Node.js
 - Express (handles OAuth and API requests)
+
 **API**
 - Spotify Web API
+
 **Hosting**
 - Render via Github actions
 
